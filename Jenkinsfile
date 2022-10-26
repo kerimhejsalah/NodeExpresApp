@@ -27,8 +27,20 @@ pipeline {
             sh 'npm test'
           }
         }*/
+        stage('Build image with docker') {
+            steps{
+           dockerImage = docker.build("karydock/appnode-oct:latest")
+            }
+       }
+        stage('Push image') {
+              steps{
+        withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
+        dockerImage.push()
+        }
+        }
         
-        stage('Docker Build and Push'){
+        
+        /*stage('Docker Build and Push'){
             steps{
                 withDockerRegistry([credentialsId: "docker-hub", url:""]){
                     //sh 'printenv'
@@ -37,7 +49,7 @@ pipeline {
                 }
             }
             
-        }
+        }*/
         
          
         
