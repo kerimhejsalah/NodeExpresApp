@@ -1,1 +1,1 @@
-Configuration Github with jenkins 2 2 
+Configuration Github with jenkins 2 23
