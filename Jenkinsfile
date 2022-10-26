@@ -28,15 +28,16 @@ pipeline {
           }
         }*/
         stage('Build image with docker') {
-            steps{
-           dockerImage = docker.build("karydock/appnode-oct:latest")
-            }
-       }
+                    steps{
+                   dockerImage = docker.build("karydock/appnode-oct:latest")
+                    }
+          }
         stage('Push image') {
               steps{
-        withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
-        dockerImage.push()
-        }
+                    withDockerRegistry([credentialsId: "docker-hub", url:""]){
+                    dockerImage.push()
+                      }
+              }
         }
         
         
