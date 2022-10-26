@@ -1,3 +1,4 @@
+def dockerimage
 pipeline {
     
      agent any
@@ -28,16 +29,25 @@ pipeline {
           }
         }*/
         stage('Build image with docker') {
+             steps{
+                script{
                    
                    dockerImage = docker.build("karydock/appnode-oct:latest")
                     
+                }
+             }
+                    
           }
         stage('Push image') {
+            steps{
+                script{
            
                     withDockerRegistry([credentialsId: "docker-hub", url:""]){
                     dockerImage.push()
                     
               }
+               }
+             }
         }
         
         
