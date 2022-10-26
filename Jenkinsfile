@@ -4,12 +4,14 @@ pipeline {
     
   tools {nodejs "NodeJS 18.4.0"}
     stages {
-        stage('Git') {
-            steps {
-                git 'https://github.com/KMechG/NodeExpresApp.git'
-            }
+        
+        stage('Deployer app node'){
+
+          steps {
+           echo 'test'
+          }
         }
-       
+        
         stage('Build') {
           steps {
               
