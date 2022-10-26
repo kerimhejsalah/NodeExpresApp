@@ -28,15 +28,15 @@ pipeline {
           }
         }*/
         stage('Build image with docker') {
-                    script{
+                   
                    dockerImage = docker.build("karydock/appnode-oct:latest")
-                    }
+                    
           }
         stage('Push image') {
-              script{
+           
                     withDockerRegistry([credentialsId: "docker-hub", url:""]){
                     dockerImage.push()
-                      }
+                    
               }
         }
         
