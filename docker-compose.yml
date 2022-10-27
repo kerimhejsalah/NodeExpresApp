@@ -2,7 +2,9 @@ version: '3.8'
 services:
     api:
         image: myapp
-        build: .
+        build: 
+          context: .
+          dockerfile: Dockerfile
         deploy:
           replicas: 3
           restart_policy:
