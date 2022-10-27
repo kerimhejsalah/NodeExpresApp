@@ -1,13 +1,28 @@
 version: '3.8'
 services:
     api:
+        image: myapp
         build: .
+        deploy:
+          replicas: 3
+          restart_policy:
+             condition: any
+          update_config:
+             parallelism: 2
+              delay: 15s
         ports:
             - "8080:8080"
         links:
             - mongo
     mongo:
         image: mongo:4.2
+        deploy:
+          replicas: 3
+          restart_policy:
+             condition: any
+          update_config:
+             parallelism: 2
+              delay: 15s
         ports:
             - "27017:27017"
         expose:
