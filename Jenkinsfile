@@ -30,7 +30,7 @@ pipeline {
              steps{
                 script{
                    
-                   dockerImage = docker.build("karydock/appnode-oct:latest")
+                   dockerImage = docker.build("hajsalahkarim/myproject")
                     
                 }
              }
@@ -40,7 +40,8 @@ pipeline {
             steps{
                 script{
            
-                    withDockerRegistry([credentialsId: "docker-hub", url:""]){
+                      withCredentials([usernamePassword( credentialsId: 'docker-hub', usernameVariable: 'hajsalahkarim', passwordVariable: 'Azertyazerty123@')])
+               {
                     dockerImage.push()
                     
               }
