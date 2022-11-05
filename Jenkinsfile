@@ -15,7 +15,6 @@ pipeline {
         
         stage('Build') {
           steps {
-            sh 'npm i nohup' 
             sh 'npm install express'
             sh 'npm install mongo'
             sh 'npm install mocha -g'
